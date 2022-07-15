@@ -19,24 +19,15 @@ extension FeaturedViewController: UICollectionViewDataSource {
         
     }
     
-    fileprivate func makePopularCell() -> UICollectionViewCell {
-        if let cell =  popularCollectionView.dequeueReusableCell(withReuseIdentifier: "popularCell", for: IndexPath) as? PopularCollectionViewCell {
-            cell.titleLabel.text = popularMovies[indexPath.item].title
-            cell.image.image = UIImage(named: popularMovies[indexPath.item].backdrop)
-            
-            return cell
-        }
-        return PopularCollectionViewCell()
-    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == popularCollectionView{
             return makePopularCell()
         } else if collectionView == nowPlayingCollectionView {
             if let cell = nowPlayingMovies.dequeueReusableCell(withReuseIdentifier: "nowPlayingCell", for:  indexPath) as? NowPlayingCollectionViewCell {
-                cell.titleLabel.text = titulo
-                cell.dateLabel.text = "\nowPlayingMovies[indexPath.item].releaseDate.prefix(4)"
-                cell.image.image = UIImage(named: nowPlayingMovies[indexPath.item].poster)
+                
+                cell.setup(title: titulo,
+                           year: "\nowPlayingMovies[indexPath.item].releaseDate.prefix(4)",
+                           image: UIImage(named: nowPlayingMovies[indexPath.item].poster)
                 
                 return cell
             }
@@ -44,4 +35,19 @@ extension FeaturedViewController: UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
+    
+    fileprivate func makePopularCell() -> UICollectionViewCell {
+        if let cell =  popularCollectionView.dequeueReusableCell(withReuseIdentifier: "popularCell", for: IndexPath) as? PopularCollectionViewCell {
+            
+            cell.setup(title: popularMovies[indexPath.item].title,
+                       image: UIImage(named: popularMovies[indexPath.item].backdrop ?? UIImage()))
+            
+            return cell
+        }
+        return PopularCollectionViewCell()
+    }
+    
+//    fileprivate func makeNowPlayingCell(_
+    )
+    
 }
