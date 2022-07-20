@@ -49,12 +49,21 @@ extension FeaturedViewController: UICollectionViewDataSource {
     
     fileprivate func makeNowPlayingCell(_ indexPath: IndexPath) -> NowPlayingCollectionViewCell {
         if let cell = nowPlayingCollectionView.dequeueReusableCell(withReuseIdentifier: NowPlayingCollectionViewCell.cellIdentifier, for: indexPath) as? NowPlayingCollectionViewCell {
-            
-            let titulo: String = nowPlayingMovies[indexPath.item].title
-            
-            cell.setup(title: titulo,
+                        
+            cell.setup(title: nowPlayingMovies[indexPath.item].title,
                        year: "\(nowPlayingMovies[indexPath.item].releaseDate.prefix(4))",
                        image: UIImage(named: nowPlayingMovies[indexPath.item].posterPath) ?? UIImage())
+            
+            let movie = nowPlayingMovies[indexPath.item]
+            
+            Task {
+                let imageData = await Movie.downloadImageData(withPath: movie.posterPath)
+                let imagem = UIImage(data: imageData) ?? UIImage()
+                
+                cell.setup(title: movie.title,
+                           year: "\(nowPlayingMovies[indexPath.item].releaseDate.prefix(4))",
+                           image: imagem)
+            }
             return cell
         }
         return NowPlayingCollectionViewCell()
