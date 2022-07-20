@@ -78,6 +78,14 @@
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WAQ-d0-KJi">
                                                                             <rect key="frame" x="8" y="8" width="184" height="100.5"/>
+                                                                            <accessibility key="accessibilityConfiguration">
+                                                                                <accessibilityTraits key="traits" image="YES" playsSound="YES"/>
+                                                                            </accessibility>
+                                                                            <userDefinedRuntimeAttributes>
+                                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                    <integer key="value" value="8"/>
+                                                                                </userDefinedRuntimeAttribute>
+                                                                            </userDefinedRuntimeAttributes>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;titleLabel&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtG-KT-1A4">
                                                                             <rect key="frame" x="8" y="112.5" width="184" height="19.5"/>
@@ -198,6 +206,11 @@
                                                                         <constraint firstItem="d6h-U9-C2Z" firstAttribute="leading" secondItem="3ox-TN-WUV" secondAttribute="leading" id="xwr-aO-FWE"/>
                                                                     </constraints>
                                                                 </collectionViewCellContentView>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="dateLabel" destination="40o-fU-RD1" id="2jw-AJ-vvm"/>
                                                                     <outlet property="imageView" destination="d6h-U9-C2Z" id="1s2-df-nIS"/>
@@ -369,6 +382,11 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="TTE-ev-V1l" secondAttribute="height" multiplier="125:193" id="2VY-fA-VLV"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6N4-cg-7Bb" userLabel="ratingStackView">
                                                         <rect key="frame" x="156" y="8" width="242" height="191.5"/>
@@ -498,6 +516,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.074509803920000006" green="0.043137254899999998" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.99607843139999996" green="0.32549019610000002" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
@@ -515,6 +534,7 @@
             <point key="canvasLocation" x="1138" y="87"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.99607843139999996" green="0.32549019610000002" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="film" catalog="system" width="128" height="93"/>
         <image name="film.fill" catalog="system" width="128" height="93"/>
