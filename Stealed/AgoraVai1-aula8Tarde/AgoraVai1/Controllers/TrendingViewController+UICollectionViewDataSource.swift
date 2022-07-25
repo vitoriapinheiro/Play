@@ -26,17 +26,17 @@ extension TrendingViewController: UICollectionViewDataSource {
     fileprivate func makeTrendingCell(_ indexPath: IndexPath) -> TrendingCollectionViewCell {
         if let cell = trendingCollectionView.dequeueReusableCell(withReuseIdentifier: TrendingCollectionViewCell.cellIdentifier, for: indexPath) as? TrendingCollectionViewCell{
             cell.setup(title: trendingMovies[indexPath.item].title,
-                       year: "\(trendingMovies[indexPath.item].releaseDate.prefix(4))",
-                       image: UIImage(named: trendingMovies[indexPath.item].posterPath) ?? UIImage())
+                       year: trendingMovies[indexPath.item].releaseDate ?? "",
+                       image: UIImage(named: trendingMovies[indexPath.item].posterPath ?? "") ?? UIImage())
             
             let movie = trendingMovies[indexPath.item]
             
             Task {
-                let imageData = await Movie.downloadImageData(withPath: movie.posterPath)
+                let imageData = await Movie.downloadImageData(withPath: movie.posterPath ?? "")
                 let imagem = UIImage(data: imageData) ?? UIImage()
                 
                 cell.setup(title: movie.title,
-                           year: "\(trendingMovies[indexPath.item].releaseDate.prefix(4))",
+                           year:  trendingMovies[indexPath.item].releaseDate ?? "",
                            image: imagem)
             }
             return cell

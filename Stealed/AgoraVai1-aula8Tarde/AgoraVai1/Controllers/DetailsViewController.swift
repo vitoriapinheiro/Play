@@ -27,14 +27,14 @@ class DetailsViewController: UIViewController {
         self.title = movie.title
         
         Task {
-            let imageData = await Movie.downloadImageData(withPath: movie.backdropPath)
+            let imageData = await Movie.downloadImageData(withPath: movie.backdropPath ?? "")
             let imagem = UIImage(data: imageData) ?? UIImage()
             
             self.backdropImage.image = imagem
         }
         
         Task {
-            let imageData = await Movie.downloadImageData(withPath: movie.posterPath)
+            let imageData = await Movie.downloadImageData(withPath: movie.posterPath ?? "")
             let image = UIImage(data: imageData) ?? UIImage()
             
             self.posterImage.image = image

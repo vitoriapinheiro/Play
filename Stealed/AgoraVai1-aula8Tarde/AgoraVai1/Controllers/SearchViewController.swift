@@ -9,6 +9,9 @@ import UIKit
 
 class SearchViewController: UIViewController, UISearchResultsUpdating{
     
+    var searchMovies: [Movie] = []
+    
+    @IBOutlet var tableViewSearch: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -24,7 +27,10 @@ class SearchViewController: UIViewController, UISearchResultsUpdating{
             return
         }
         
-        print(text)
+        Task{
+            searchMovies = await Movie.searchMoviesAPI(busca: text)
+            tableViewSearch.reloadData()
+        }
     }
     
 }
